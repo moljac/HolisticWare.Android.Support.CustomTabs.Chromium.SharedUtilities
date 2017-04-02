@@ -95,7 +95,7 @@ namespace DemosCustomTabsTest
 			switch (viewId)
 			{
 				case Resource.Id.start_custom_tab:
-					openCustomTab();
+					OpenCustomTab();
 					break;
 				default:
 					//Unknown View Clicked
@@ -103,7 +103,7 @@ namespace DemosCustomTabsTest
 			}
 		}
 
-		private int getColor(EditText editText)
+        private int GetColor(EditText editText)
 		{
 			try
 			{
@@ -116,12 +116,12 @@ namespace DemosCustomTabsTest
 			}
 		}
 
-		private void openCustomTab()
+        private void OpenCustomTab()
 		{
 			string url = mUrlEditText.Text.ToString();
 
-			int color = getColor(mCustomTabColorEditText);
-			int secondaryColor = getColor(mCustomTabSecondaryColorEditText);
+			int color = GetColor(mCustomTabColorEditText);
+			int secondaryColor = GetColor(mCustomTabSecondaryColorEditText);
 
 			CustomTabsIntent.Builder intentBuilder = new CustomTabsIntent.Builder();
             intentBuilder.SetToolbarColor(color);
@@ -174,7 +174,7 @@ namespace DemosCustomTabsTest
 			intentBuilder.SetStartAnimations(this, Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
 			intentBuilder.SetExitAnimations(this, Android.Resource.Animation.SlideInLeft, Android.Resource.Animation.SlideOutRight);
 
-			CustomTabActivityHelper.OpenCustomTab
+            new CustomTabActivityHelper().LaunchUrlWithCustomTabsOrFallback
                                     (
                                        this, 
                                        intentBuilder.Build(), 

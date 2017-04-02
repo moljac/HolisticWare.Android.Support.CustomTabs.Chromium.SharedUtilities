@@ -50,7 +50,7 @@ namespace DemosCustomTabsTest
             SetContentView(Resource.Layout.activity_serviceconnection);
 
             customTabActivityHelper = new CustomTabActivityHelper();
-            customTabActivityHelper.setConnectionCallback(this);
+            customTabActivityHelper.ConnectionCallback = this; //IConnectionCallback
 
             mUrlEditText = FindViewById<EditText>(Resource.Id.url);
             mMayLaunchUrlButton = FindViewById<Button>(Resource.Id.button_may_launch_url);
@@ -63,7 +63,7 @@ namespace DemosCustomTabsTest
         protected override void OnDestroy()
         {
             base.OnDestroy();
-            customTabActivityHelper.setConnectionCallback(null);
+            customTabActivityHelper.ConnectionCallback = null;
         }
 
         public virtual void OnCustomTabsConnected()
@@ -100,7 +100,13 @@ namespace DemosCustomTabsTest
                     break;
                 case Resource.Id.start_custom_tab:
                     CustomTabsIntent customTabsIntent = (new CustomTabsIntent.Builder(customTabActivityHelper.Session)).Build();
-                    CustomTabActivityHelper.OpenCustomTab(this, customTabsIntent, uri, new WebviewFallback());
+                    new CustomTabActivityHelper().LaunchUrlWithCustomTabsOrFallback
+                                                        (
+                                                            this, 
+                                                            customTabsIntent, 
+                                                            uri, 
+                                                            new WebviewFallback()
+                                                        );
                     break;
                 default:
                     //Unkown View Clicked

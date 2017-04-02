@@ -113,7 +113,13 @@ namespace DemosCustomTabsTest
 
 				int tabcolor = Resources.GetColor(Resource.Color.primaryColor);
 				CustomTabsIntent customTabsIntent = (new CustomTabsIntent.Builder()).SetToolbarColor(tabcolor).Build();
-				CustomTabActivityHelper.OpenCustomTab(this, customTabsIntent, uri, new WebviewFallback());
+                new CustomTabActivityHelper().LaunchUrlWithCustomTabsOrFallback
+                                            (
+                                                this, 
+                                                customTabsIntent, 
+                                                uri, 
+                                                new WebviewFallback()
+                                             );
 
 				mMessageTextView.Visibility = ViewStates.Visible;
 				mCreateNotificationButton.Visibility = ViewStates.Gone;

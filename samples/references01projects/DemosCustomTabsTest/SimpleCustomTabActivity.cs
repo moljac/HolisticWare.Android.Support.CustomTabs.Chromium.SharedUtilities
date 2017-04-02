@@ -61,7 +61,13 @@ namespace DemosCustomTabsTest
 				case Resource.Id.start_custom_tab:
 					string url = mUrlEditText.Text.ToString();
 					CustomTabsIntent customTabsIntent = (new CustomTabsIntent.Builder()).Build();
-					CustomTabActivityHelper.OpenCustomTab(this, customTabsIntent, Uri.Parse(url), new WebviewFallback());
+                    new CustomTabActivityHelper().LaunchUrlWithCustomTabsOrFallback
+                                                        (
+                                                            this, 
+                                                            customTabsIntent, 
+                                                            Uri.Parse(url),
+                                                            new WebviewFallback()
+                                                        );
 					break;
 				default:
 					//Unknown View Clicked
