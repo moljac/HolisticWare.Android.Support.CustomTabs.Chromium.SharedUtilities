@@ -57,12 +57,14 @@ namespace DemosCustomTabsTest
 			mMessageTextView = FindViewById<TextView>(Resource.Id.back_to_app_message);
 			mCreateNotificationButton = FindViewById<TextView>(Resource.Id.create_notification);
             mCreateNotificationButton.SetOnClickListener(this);
-			startChromeCustomTab(Intent);
+			StartChromeCustomTab(Intent);
 		}
 
 		protected override void OnNewIntent(Intent intent)
 		{
-			startChromeCustomTab(intent);
+			StartChromeCustomTab(intent);
+
+            return;
 		}
 
 		public void OnClick(View v)
@@ -78,6 +80,8 @@ namespace DemosCustomTabsTest
 					//Unknown view clicked
 			break;
 			}
+
+            return;
 		}
 
 		private void CreateAndShowNotification()
@@ -89,22 +93,24 @@ namespace DemosCustomTabsTest
                         .SetContentTitle(GetString(Resource.String.notification_title))
                         .SetContentText(GetString(Resource.String.notification_text));
 
-			Intent resultIntent = new Intent(this.ApplicationContext, typeof(NotificationParentActivity));
+            Intent ri = new Intent(this.ApplicationContext, typeof(NotificationParentActivity));
 
-			resultIntent.PutExtra(NotificationParentActivity.EXTRA_URL, GetString(Resource.String.notification_sample_url));
+			ri.PutExtra(NotificationParentActivity.EXTRA_URL, GetString(Resource.String.notification_sample_url));
 
-            resultIntent.SetAction(Intent.ActionView);
+            ri.SetAction(Intent.ActionView);
 
-			PendingIntent pendingIntent = PendingIntent.GetActivity(this.ApplicationContext, 0, resultIntent, 0);
+            PendingIntent pi = PendingIntent.GetActivity(this.ApplicationContext, 0, ri, 0);
 
-            mBuilder.SetContentIntent(pendingIntent);
+            mBuilder.SetContentIntent(pi);
             mBuilder.SetAutoCancel(true);
-			NotificationManager mNotificationManager = (NotificationManager) GetSystemService(Context.NotificationService);
+            NotificationManager nm = (NotificationManager) GetSystemService(Context.NotificationService);
 			// mId allows you to update the notification later on.
-			mNotificationManager.Notify(NOTIFICATION_ID, mBuilder.Build());
+			nm.Notify(NOTIFICATION_ID, mBuilder.Build());
+
+            return;
 		}
 
-		private void startChromeCustomTab(Intent intent)
+        private void StartChromeCustomTab(Intent intent)
 		{
 			string url = intent.GetStringExtra(EXTRA_URL);
 			if (url != null)
@@ -129,6 +135,8 @@ namespace DemosCustomTabsTest
 				mMessageTextView.Visibility = ViewStates.Gone;
 				mCreateNotificationButton.Visibility = ViewStates.Visible;
 			}
+
+            return;
 		}
 	}
 
