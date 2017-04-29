@@ -19,7 +19,7 @@ using Android.Widget;
 using Android.Net;
 using Android.Support.V7.App;
 using Android.Support.CustomTabs;
-using Android.Support.CustomTabs.Chromium.SharedUtilities;
+using HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities;
 
 namespace DemosCustomTabsTest
 {
@@ -105,7 +105,7 @@ namespace DemosCustomTabsTest
                                                             this, 
                                                             customTabsIntent, 
                                                             uri, 
-                                                            new WebviewFallback()
+                                                            new WebViewFallback()
                                                         );
                     break;
                 default:

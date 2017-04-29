@@ -22,7 +22,7 @@ using Android.Util;
 using Android.Support.CustomTabs;
 
 using Android.Support.V7.App;
-using Android.Support.CustomTabs.Chromium.SharedUtilities;
+using HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities;
 
 namespace DemosCustomTabsTest
 {
@@ -55,14 +55,15 @@ namespace DemosCustomTabsTest
 		private CheckBox mAutoHideAppBarCheckbox;
 		private CheckBox mAddDefaultShareCheckbox;
 		private CheckBox mToolbarItemCheckbox;
-		private CustomTabActivityHelper mCustomTabActivityHelper;
+
+        private CustomTabActivityHelper custom_tab_activity_helper;
 
 		protected override void OnCreate(Bundle savedInstanceState)
 		{
 			base.OnCreate(savedInstanceState);
             SetContentView (Resource.Layout.activity_custom_ui);
 
-			mCustomTabActivityHelper = new CustomTabActivityHelper();
+			custom_tab_activity_helper = new CustomTabActivityHelper();
             FindViewById<Button>(Resource.Id.start_custom_tab).SetOnClickListener(this);
 
 			mUrlEditText = FindViewById<EditText>(Resource.Id.url);
@@ -80,13 +81,13 @@ namespace DemosCustomTabsTest
 		protected override void OnStart()
 		{
 			base.OnStart();
-			mCustomTabActivityHelper.BindCustomTabsService(this);
+			custom_tab_activity_helper.BindCustomTabsService(this);
 		}
 
 		protected override void OnStop()
 		{
 			base.OnStop();
-			mCustomTabActivityHelper.UnbindCustomTabsService(this);
+			custom_tab_activity_helper.UnbindCustomTabsService(this);
 		}
 
 		public void OnClick(View v)
@@ -179,7 +180,7 @@ namespace DemosCustomTabsTest
                                        this, 
                                        intentBuilder.Build(), 
                                        Uri.Parse(url), 
-                                       new WebviewFallback()
+                                       new WebViewFallback()
                                     );
 
             return;

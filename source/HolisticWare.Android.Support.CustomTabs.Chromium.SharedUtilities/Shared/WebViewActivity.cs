@@ -1,4 +1,4 @@
-﻿// Copyright 2015 Google Inc. All Rights Reserved.
+// Copyright 2015 Google Inc. All Rights Reserved.
 //
 // Licensed under the Apache License, Version 2.0 (the "License");
 // you may not use this file except in compliance with the License.
@@ -17,7 +17,9 @@ using Android.OS;
 using Android.Views;
 using Android.Webkit;
 
-namespace Android.Support.CustomTabs.Chromium.SharedUtilities
+namespace
+	//Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities
+	HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities
 {
 	/// <summary>
 	/// This Activity is used as a fallback when there is no browser installed that supports
@@ -30,14 +32,13 @@ namespace Android.Support.CustomTabs.Chromium.SharedUtilities
         Activity
         (
             Label = "@string/title_activity_webview",
-            Theme = "@style/AppTheme"
-		)
+Theme = "@android:style/Theme.DeviceDefault"		)
     ]
 	//TODO: [MetaData("android.support.PARENT_ACTIVITY", Value = ".DemoListActivity")]
 	public class WebViewActivity 
             :
                //Activity
-               V7.App.AppCompatActivity
+               global::Android.Support.V7.App.AppCompatActivity
     {
 		public const string EXTRA_URL = "extra.url";
 
@@ -62,7 +63,7 @@ namespace Android.Support.CustomTabs.Chromium.SharedUtilities
 			switch (item.ItemId)
 			{
 				// Respond to the action bar's Up/Home button
-				case Android.Resource.Id.Home:
+				case global::Android.Resource.Id.Home:
 					Finish();
 					return true;
 			}

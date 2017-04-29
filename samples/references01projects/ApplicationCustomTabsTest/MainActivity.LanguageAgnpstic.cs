@@ -10,6 +10,7 @@ using Android.Text;
 using Android.Graphics;
 using Android.Support.CustomTabs;
 using Android.Content;
+using HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities;
 
 namespace ApplicationCustomTabsTest
 {

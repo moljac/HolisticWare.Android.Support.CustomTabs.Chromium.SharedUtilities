@@ -19,7 +19,9 @@ using Android.Net;
 using Android.OS;
 using Android.Support.CustomTabs;
 
-namespace Android.Support.CustomTabs.Chromium.SharedUtilities
+namespace
+	//Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities
+	HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities
 {
 	/// <summary>
 	/// This is a helper class to manage the connection from Activity to the CustomTabs 

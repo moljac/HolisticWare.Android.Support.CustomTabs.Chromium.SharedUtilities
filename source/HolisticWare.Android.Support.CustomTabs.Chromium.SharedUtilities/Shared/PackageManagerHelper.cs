@@ -7,7 +7,9 @@ using Android.Util;
 using Android.Text;
 using System.Text;
 
-namespace Android.Support.CustomTabs.Chromium.SharedUtilities
+namespace
+	//Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities
+	HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities
 {
     public class PackageManagerHelper
     {
@@ -85,7 +87,7 @@ namespace Android.Support.CustomTabs.Chromium.SharedUtilities
 
 			PackageManager pm = context.PackageManager;
 			// Get default VIEW intent handler.
-			Intent activityIntent = new Intent(Intent.ActionView, Android.Net.Uri.Parse(url));
+			Intent activityIntent = new Intent(Intent.ActionView, global::Android.Net.Uri.Parse(url));
 			ResolveInfo defaultViewHandlerInfo = pm.ResolveActivity(activityIntent, 0);
 			string defaultViewHandlerPackageName = null;
 			if (defaultViewHandlerInfo != null)
@@ -162,7 +164,7 @@ namespace Android.Support.CustomTabs.Chromium.SharedUtilities
 			try
 			{
 				PackageManager pm = context.PackageManager;
-				IList<ResolveInfo> handlers = pm.QueryIntentActivities(intent, Android.Content.PM.PackageInfoFlags.ResolvedFilter);
+				IList<ResolveInfo> handlers = pm.QueryIntentActivities(intent, global::Android.Content.PM.PackageInfoFlags.ResolvedFilter);
 				if (handlers == null || handlers.Count == 0)
 				{
 					return false;

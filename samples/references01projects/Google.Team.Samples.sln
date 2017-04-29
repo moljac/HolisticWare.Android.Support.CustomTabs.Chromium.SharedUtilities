@@ -8,7 +8,7 @@ Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "ApplicationCustomTabsTest",
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "DemosCustomTabsTest", "DemosCustomTabsTest\DemosCustomTabsTest.csproj", "{F6E5C479-4017-4D9C-BE6C-F97F2F43484D}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Android.Support.CustomTabs.Chromium.SharedUtilities", "..\..\source\Android.Support.CustomTabs.Chromium.SharedUtilities\Android.Support.CustomTabs.Chromium.SharedUtilities.csproj", "{29688040-634C-4BFC-BA62-CCD9DBE2A503}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities", "..\..\source\HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities\HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities.csproj", "{29688040-634C-4BFC-BA62-CCD9DBE2A503}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution

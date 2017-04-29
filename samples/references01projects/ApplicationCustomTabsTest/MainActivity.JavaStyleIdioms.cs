@@ -130,7 +130,7 @@ namespace ApplicationCustomTabsTest
 
 				CustomTabsIntent customTabsIntent = builder.Build();
 				// derived class used - thus FQNS
-				Android.Support.CustomTabs.Chromium.SharedUtilities.
+				HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities.
 						CustomTabsHelper.AddKeepAliveExtra(this, customTabsIntent.Intent);
 
 				try

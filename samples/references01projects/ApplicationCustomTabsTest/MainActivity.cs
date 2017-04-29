@@ -16,7 +16,7 @@ using Android.Text;
 using Android.Graphics;
 
 using Android.Support.CustomTabs;
-using Android.Support.CustomTabs.Chromium.SharedUtilities;
+using HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities;
 
 // Copyright 2015 Google Inc. All Rights Reserved.
 //

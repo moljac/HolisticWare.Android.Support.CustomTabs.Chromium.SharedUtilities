@@ -2,7 +2,9 @@
 
 using Android.App;
 
-namespace Android.Support.CustomTabs.Chromium.SharedUtilities
+namespace
+	//Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities
+	HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities
 {
 	/// <summary>
 	/// To be used as a fallback to open the Uri when Custom Tabs is not available.
@@ -12,6 +14,6 @@ namespace Android.Support.CustomTabs.Chromium.SharedUtilities
 		/// 
 		/// <param name="activity"> The Activity that wants to open the Uri. </param>
 		/// <param name="uri"> The uri to be opened by the fallback. </param>
-		void OpenUri(Activity activity, Android.Net.Uri uri);
+		void OpenUri(Activity activity, global::Android.Net.Uri uri);
 	}
 }

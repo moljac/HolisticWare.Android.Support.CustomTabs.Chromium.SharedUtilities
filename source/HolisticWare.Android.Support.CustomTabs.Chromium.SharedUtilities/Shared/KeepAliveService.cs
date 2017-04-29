@@ -12,24 +12,21 @@
 // See the License for the specific language governing permissions and
 // limitations under the License.
 
-using Android.App;
-using Android.Content;
-using Android.Net;
-using Android.Support.CustomTabs.Chromium.SharedUtilities;
-
-namespace Android.Support.CustomTabs.Chromium.SharedUtilities
+namespace
+	//Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities
+	HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities
 {
 
 	/// <summary>
-	/// A Fallback that opens a Webview when Custom Tabs is not available
+	/// Empty service used by the custom tab to bind to, raising the application's importance.
 	/// </summary>
-	public class WebviewFallback : ICustomTabFallback
-	{
-		public void OpenUri(Activity activity, Uri uri)
+	public class KeepAliveService : global::Android.App.Service
+    {
+		private static readonly global::Android.OS.Binder sBinder = new global::Android.OS.Binder();
+
+		public override global::Android.OS.IBinder OnBind(global::Android.Content.Intent intent)
 		{
-			Intent intent = new Intent(activity, typeof(WebViewActivity));
-			intent.PutExtra(WebViewActivity.EXTRA_URL, uri.ToString());
-			activity.StartActivity(intent);
+			return sBinder;
 		}
 	}
 

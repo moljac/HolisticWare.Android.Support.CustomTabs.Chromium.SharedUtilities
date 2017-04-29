@@ -1,6 +1,8 @@
 ﻿using System;
 
-namespace Android.Support.CustomTabs.Chromium.SharedUtilities
+namespace
+	//Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities
+	HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities
 {
 	/// <summary>
 	/// A Callback for when the service is connected or disconnected. Use those callbacks to
