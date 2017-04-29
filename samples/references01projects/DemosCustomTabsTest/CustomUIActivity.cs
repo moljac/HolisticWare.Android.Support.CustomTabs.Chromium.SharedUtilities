@@ -134,14 +134,14 @@ namespace DemosCustomTabsTest
 				//UI thread to keep the example short.
 				string actionLabel = GetString(Resource.String.label_action);
 				Bitmap icon = BitmapFactory.DecodeResource(Resources, Android.Resource.Drawable.IcMenuShare);
-				PendingIntent pendingIntent = CreatePendingIntent(ActionBroadcastReceiver.ACTION_ACTION_BUTTON);
+				PendingIntent pendingIntent = CreatePendingIntent(CustomTabsActionsBroadcastReceiver.ACTION_ACTION_BUTTON);
 				intentBuilder.SetActionButton(icon, actionLabel, pendingIntent);
 			}
 
 			if (mAddMenusCheckbox.Checked)
 			{
 				string menuItemTitle = GetString(Resource.String.menu_item_title);
-				PendingIntent menuItemPendingIntent = CreatePendingIntent(ActionBroadcastReceiver.ACTION_MENU_ITEM);
+				PendingIntent menuItemPendingIntent = CreatePendingIntent(CustomTabsActionsBroadcastReceiver.ACTION_MENU_ITEM);
 				intentBuilder.AddMenuItem(menuItemTitle, menuItemPendingIntent);
 			}
 
@@ -156,7 +156,7 @@ namespace DemosCustomTabsTest
 				//UI thread to keep the example short.
 				string actionLabel = GetString(Resource.String.label_action);
 				Bitmap icon = BitmapFactory.DecodeResource(Resources, Android.Resource.Drawable.IcMenuShare);
-                PendingIntent pendingIntent = CreatePendingIntent(ActionBroadcastReceiver.ACTION_TOOLBAR);
+                PendingIntent pendingIntent = CreatePendingIntent(CustomTabsActionsBroadcastReceiver.ACTION_TOOLBAR);
 				intentBuilder.AddToolbarItem(TOOLBAR_ITEM_ID, icon, actionLabel, pendingIntent);
 			}
 
@@ -188,8 +188,8 @@ namespace DemosCustomTabsTest
 
 		private PendingIntent CreatePendingIntent(int actionSourceId)
 		{
-			Intent actionIntent = new Intent(this.ApplicationContext, typeof(ActionBroadcastReceiver));
-			actionIntent.PutExtra(ActionBroadcastReceiver.KEY_ACTION_SOURCE, actionSourceId);
+			Intent actionIntent = new Intent(this.ApplicationContext, typeof(CustomTabsActionsBroadcastReceiver));
+			actionIntent.PutExtra(CustomTabsActionsBroadcastReceiver.KEY_ACTION_SOURCE, actionSourceId);
 			return PendingIntent.GetBroadcast(ApplicationContext, actionSourceId, actionIntent, 0);
 		}
 	}
