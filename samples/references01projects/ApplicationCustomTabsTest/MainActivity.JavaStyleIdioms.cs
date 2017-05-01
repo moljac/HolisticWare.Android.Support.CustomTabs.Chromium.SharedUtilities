@@ -123,6 +123,7 @@ namespace ApplicationCustomTabsTest
 				PrepareMenuItems(builder);
 				PrepareActionButton(builder);
 				PrepareBottomBar(builder);
+
 				builder.SetStartAnimations(this, Resource.Animation.slide_in_right, Resource.Animation.slide_out_left);
 				builder.SetExitAnimations(this, Resource.Animation.slide_in_left, Resource.Animation.slide_out_right);
 				builder.SetCloseButtonIcon(BitmapFactory.DecodeResource(Resources, Resource.Drawable.ic_arrow_back));
