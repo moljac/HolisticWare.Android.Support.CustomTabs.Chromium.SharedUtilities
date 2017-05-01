@@ -20,49 +20,50 @@ using Android.Media;
 
 using Android.Support.CustomTabs;
 using Android.App;
+using System.Text;
 
 namespace
-	//Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities
-	HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities
+    //Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities
+    HolisticWare.Android.Support.CustomTabs.Chromium.SharedUtilities
 {
     /// <summary>
     /// A <seealso cref="BroadcastReceiver"/> that manages the interaction with the active Custom Tab.
     /// </summary>
     public class BottomBarManager : BroadcastReceiver
-	{
-		private static WeakReference<MediaPlayer> sMediaPlayerWeakRef;
+    {
+        private static WeakReference<MediaPlayer> sMediaPlayerWeakRef;
 
-		public override void OnReceive(Context context, Intent intent)
-		{
-			int clickedId = intent.GetIntExtra(CustomTabsIntent.ExtraRemoteviewsClickedId, -1);
-			Toast.MakeText(context, "Clicked", global::Android.Widget.ToastLength.Long).Show();
+        public override void OnReceive(Context context, Intent intent)
+        {
+            int clickedId = intent.GetIntExtra(CustomTabsIntent.ExtraRemoteviewsClickedId, -1);
+            Toast.MakeText(context, "Clicked", global::Android.Widget.ToastLength.Long).Show();
 
-			CustomTabsSession session = SessionHelper.GetCurrentSession();
-			if (session == null)
-			{
-				return;
-			}
+            CustomTabsSession session = SessionHelper.GetCurrentSession();
+            if (session == null)
+            {
+                return;
+            }
 
-			if (clickedId == Resource.Id.play_pause)
-			{
+            if (clickedId == Resource.Id.play_pause)
+            {
                 MediaPlayer player = null;
                 sMediaPlayerWeakRef.TryGetTarget(out player);
 
-				if (player != null)
-				{
-					bool isPlaying = player.IsPlaying;
-					if (isPlaying)
-					{
-						player.Pause();
-					}
-					else
-					{
-						player.Start();
-					}
-					// Update the play/stop icon to respect the current state.
-					session.SetSecondaryToolbarViews(CreateRemoteViews(context, isPlaying), ClickableIDs, GetOnClickPendingIntent(context));
-				}
-			}
+                if (player != null)
+                {
+                    bool isPlaying = player.IsPlaying;
+                    if (isPlaying)
+                    {
+                        player.Pause();
+                    }
+                    else
+                    {
+                        player.Start();
+                    }
+                    // Update the play/stop icon to respect the current state.
+                    session.SetSecondaryToolbarViews(CreateRemoteViews(context, isPlaying), ClickableIDs, GetOnClickPendingIntent(context));
+                }
+            }
             /*
 			else if (clickedId == Resource.Id.cover)
 			{
@@ -70,22 +71,27 @@ namespace
 				session.SetSecondaryToolbarViews(null, null, null);
 			}
 			*/
-		}
+        }
 
-		/// <summary>
-		/// Creates a RemoteViews that will be shown as the bottom bar of the custom tab. </summary>
-		/// <param name="showPlayIcon"> If true, a play icon will be shown, otherwise show a pause icon. </param>
-		/// <returns> The created RemoteViews instance. </returns>
-		public static RemoteViews CreateRemoteViews(Context context, bool showPlayIcon)
-		{
-			RemoteViews remoteViews = new RemoteViews(context.PackageName, Resource.Layout.remote_view);
+        /// <summary>
+        /// Creates a RemoteViews that will be shown as the bottom bar of the custom tab. </summary>
+        /// <param name="showPlayIcon"> If true, a play icon will be shown, otherwise show a pause icon. </param>
+        /// <returns> The created RemoteViews instance. </returns>
+        public static RemoteViews CreateRemoteViews(Context context, bool showPlayIcon)
+        {
+            RemoteViews remoteViews = new RemoteViews(context.PackageName, Resource.Layout.remote_view);
 
-            int iconRes = 
+            int iconRes =
                     showPlayIcon ? Resource.Drawable.ic_play : Resource.Drawable.ic_stop;
-			remoteViews.SetImageViewResource(Resource.Id.play_pause, iconRes);
+            remoteViews.SetImageViewResource(Resource.Id.play_pause, iconRes);
 
-			return remoteViews;
-		}
+#if DEBUG
+            StringBuilder sb = new StringBuilder();
+            sb.AppendLine("CreateRemoteViews Finished");
+#endif
+
+            return remoteViews;
+        }
         /*
     <Box
         android:id="@+id/cover"
@@ -103,38 +109,38 @@ namespace
         android:scaleType="centerCrop"
         android:src="@drawable/cover" />
     -->
-         */ 
-		/// <returns> A list of View ids, the onClick event of which is handled by Custom Tab. </returns>
-		public static int[] ClickableIDs
-		{
-			get
-			{
-				return new int[]
+         */
+        /// <returns> A list of View ids, the onClick event of which is handled by Custom Tab. </returns>
+        public static int[] ClickableIDs
+        {
+            get
+            {
+                return new int[]
                 {
                     Resource.Id.play_pause, 
                     //Resource.Id.cover
                 };
-			}
-		}
+            }
+        }
 
-		/// <returns> The PendingIntent that will be triggered when the user clicks on the Views listed by
-		/// <seealso cref="BottomBarManager#getClickableIDs()"/>. </returns>
-		public static PendingIntent GetOnClickPendingIntent(Context context)
-		{
-			Intent broadcastIntent = new Intent(context, typeof(BottomBarManager));
-			return PendingIntent.GetBroadcast(context, 0, broadcastIntent, 0);
-		}
+        /// <returns> The PendingIntent that will be triggered when the user clicks on the Views listed by
+        /// <seealso cref="BottomBarManager#getClickableIDs()"/>. </returns>
+        public static PendingIntent GetOnClickPendingIntent(Context context)
+        {
+            Intent broadcastIntent = new Intent(context, typeof(BottomBarManager));
+            return PendingIntent.GetBroadcast(context, 0, broadcastIntent, 0);
+        }
 
-		/// <summary>
-		/// Sets the <seealso cref="MediaPlayer"/> to be used when the user clicks on the RemoteViews.
-		/// </summary>
-		public static MediaPlayer MediaPlayer
-		{
-			set
-			{
-				sMediaPlayerWeakRef = new WeakReference<MediaPlayer>(value);
-			}
-		}
-	}
+        /// <summary>
+        /// Sets the <seealso cref="MediaPlayer"/> to be used when the user clicks on the RemoteViews.
+        /// </summary>
+        public static MediaPlayer MediaPlayer
+        {
+            set
+            {
+                sMediaPlayerWeakRef = new WeakReference<MediaPlayer>(value);
+            }
+        }
+    }
 
 }

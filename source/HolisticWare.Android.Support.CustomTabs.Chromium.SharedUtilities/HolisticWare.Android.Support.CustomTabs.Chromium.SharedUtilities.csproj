@@ -144,6 +144,13 @@
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_share.png" />
     <AndroidResource Include="Resources\drawable-xxxhdpi\ic_stop.png" />
     <AndroidResource Include="Resources\values\styles.xml" />
+    <AndroidResource Include="Resources\drawable\cover.jpg" />
+    <AndroidResource Include="Resources\drawable\ic_arrow_back.png" />
+    <AndroidResource Include="Resources\drawable\ic_launcher.png" />
+    <AndroidResource Include="Resources\drawable\ic_play.png" />
+    <AndroidResource Include="Resources\drawable\ic_share.png" />
+    <AndroidResource Include="Resources\drawable\ic_stop.png" />
+    <AndroidResource Include="Resources\raw\amazing_grace.mp3" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="Resources\layout\" />
@@ -155,6 +162,8 @@
     <Folder Include="Resources\drawable-xxxhdpi\" />
     <Folder Include="CustomTabsUtilities\" />
     <Folder Include="CustomTabsUtilities\CustomUISetup\" />
+    <Folder Include="Resources\drawable\" />
+    <Folder Include="Resources\raw\" />
   </ItemGroup>
   <Import Project="$(MSBuildExtensionsPath)\Xamarin\Android\Xamarin.Android.CSharp.targets" />
   <Import Project="..\..\samples\references01projects\packages\Xamarin.Android.Support.Compat.25.1.1\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets" Condition="Exists('..\..\samples\references01projects\packages\Xamarin.Android.Support.Compat.25.1.1\build\MonoAndroid70\Xamarin.Android.Support.Compat.targets')" />

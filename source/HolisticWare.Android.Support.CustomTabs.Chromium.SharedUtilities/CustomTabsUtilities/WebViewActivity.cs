@@ -32,7 +32,7 @@ namespace
         Activity
         (
             Label = "@string/title_activity_webview",
-            Theme = "@android:style/Theme.AppCompat"
+            Theme = "@android:style/Theme.DeviceDefault"
         )
     ]
     //TODO: [MetaData("android.support.PARENT_ACTIVITY", Value = ".DemoListActivity")]
