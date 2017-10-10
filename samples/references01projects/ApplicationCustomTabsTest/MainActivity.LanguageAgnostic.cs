@@ -40,7 +40,7 @@ namespace ApplicationCustomTabsTest
 			actionIntent.PutExtra(Intent.ExtraEmail, "example@example.com");
 			actionIntent.PutExtra(Intent.ExtraSubject, "example");
 			PendingIntent pi = PendingIntent.GetActivity(this, 0, actionIntent, 0);
-			Bitmap icon = BitmapFactory.DecodeResource(Resources, Resource.Drawable.ic_share);
+			Bitmap icon = BitmapFactory.DecodeResource(Resources, Android.Resource.Drawable.IcMenuShare);
 			builder.SetActionButton(icon, "send email", pi, true);
 
             return;

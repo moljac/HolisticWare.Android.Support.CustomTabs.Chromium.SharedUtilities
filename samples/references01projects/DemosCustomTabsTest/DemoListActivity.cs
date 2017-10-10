@@ -39,7 +39,7 @@ namespace DemosCustomTabsTest
                 Name = "net.holisticware.customtabsdemos.DemoListActivity", 
                 MainLauncher = true, 
                 Icon = "@mipmap/ic_launcher",
-                //Theme = "@style/AppTheme"
+                Theme = "@style/AppTheme"
             )
     ]
 	[IntentFilter(new[] { "android.intent.action.MAIN" })]
