@@ -17,7 +17,7 @@ using System.Collections.Generic;
 using Android.App;
 using Android.Net;
 using Android.OS;
-using Android.Support.CustomTabs;
+using global::Android.Support.CustomTabs;
 
 namespace
 	//Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities

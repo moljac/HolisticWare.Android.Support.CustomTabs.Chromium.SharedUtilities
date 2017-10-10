@@ -13,14 +13,14 @@
 // limitations under the License.
 
 using System;
+using System.Text;
 
 using Android.Content;
 using Android.Widget;
 using Android.Media;
+using Android.App;
 
 using Android.Support.CustomTabs;
-using Android.App;
-using System.Text;
 
 namespace
     //Xamarin.Android.Support.CustomTabs.Chromium.SharedUtilities
@@ -118,7 +118,7 @@ namespace
                 return new int[]
                 {
                     Resource.Id.play_pause, 
-                    //Resource.Id.cover
+                    Resource.Drawable.cover,
                 };
             }
         }
